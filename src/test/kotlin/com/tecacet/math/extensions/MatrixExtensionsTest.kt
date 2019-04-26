@@ -2,6 +2,7 @@ package com.tecacet.math.extensions
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
+import java.util.*
 
 internal class MatrixExtensionsTest {
 
@@ -54,5 +55,16 @@ internal class MatrixExtensionsTest {
         val w = doubleArrayOf(-1.0, 0.0, 1.0)
         assertArrayEquals(doubleArrayOf(-2.0, -4.0), w*m)
     }
+
+    @Test
+    fun vectorsAndScalars() {
+        val v1 = doubleArrayOf(-1.0, 2.0, 1.5)
+        val v2 = doubleArrayOf(1.0, -1.0, 0.5)
+        val v3 = doubleArrayOf(2.0, -2.0, -0.5)
+
+        val y = 3.5*v1 - v2*5 - v3
+        assertArrayEquals(doubleArrayOf(-10.5, 14.0, 3.25), y)
+    }
+
 
 }
