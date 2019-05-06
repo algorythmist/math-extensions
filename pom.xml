@@ -110,7 +110,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--
             <plugin>
                 <groupId>org.jetbrains.dokka</groupId>
                 <artifactId>dokka-maven-plugin</artifactId>
@@ -131,7 +130,6 @@
                     </includes>
                 </configuration>
             </plugin>
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -174,7 +172,6 @@
     </build>
 
     <!-- for dokka -->
-    <!--
     <pluginRepositories>
         <pluginRepository>
             <id>jcenter</id>
@@ -182,6 +179,5 @@
             <url>https://jcenter.bintray.com/</url>
         </pluginRepository>
     </pluginRepositories>
-    -->
 
 </project>
