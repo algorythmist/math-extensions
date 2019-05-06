@@ -1,6 +1,6 @@
 package com.tecacet.math.extensions
 
-import java.util.*
+import java.util.Random
 
 /**
  * Gaussian with specific mean and standard devation
@@ -10,7 +10,7 @@ import java.util.*
 fun Random.nextGaussian(mean : Double = 0.0, std : Double = 1.0) = std * this.nextGaussian() + mean
 
 /**
- * Pick a number uniformly inside an interval
+ * Pick a number uniformly inside the interval [from,to]
  * @param from start of the interval
  * @param to end of the interval
  */
@@ -27,8 +27,16 @@ fun Random.nextBinomial(n: Int, p: Double): Int {
 }
 
 /**
- * Return true with probability p
+ * Bernoulli distribution: Return true with probability p
  */
 fun Random.nextBoolean(p : Double) = nextDouble() < p
 
+
+/**
+ * Generates an exponentially distributed random number with the given mean
+ *
+ * @param mean
+ * mean (expected value) of the distribution.
+ */
+fun Random.nextExponential(mean: Double) = -1.0 * mean * Math.log(nextDouble())
 

@@ -20,5 +20,8 @@ internal class RandomExtensionsTest {
 
         val g = random.nextGaussian(10.0, 0.1)
         assertTrue(g > 9.5 && g < 10.5)
+
+        val e = random.nextExponential(2.0)
+        println(e)
     }
 }
