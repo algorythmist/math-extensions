@@ -29,5 +29,8 @@ internal class BooleanExtensionsTest {
         assertArrayEquals(booleanArrayOf(true, true, true, true, true),
             b1 or b2)
 
+        assertArrayEquals(booleanArrayOf(true, false, false, true, true),
+                b1 xor b2)
+
     }
 }

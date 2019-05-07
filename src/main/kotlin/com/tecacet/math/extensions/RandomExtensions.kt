@@ -1,9 +1,12 @@
+/**
+ * Extend java.util.Random to generate random numbers based on various distributions
+ */
 package com.tecacet.math.extensions
 
 import java.util.Random
 
 /**
- * Gaussian with specific mean and standard devation
+ * Gaussian with specific mean and standard deviation
  * @param mean the mean
  * @param std the standard deviation
  */
@@ -35,8 +38,7 @@ fun Random.nextBoolean(p : Double) = nextDouble() < p
 /**
  * Generates an exponentially distributed random number with the given mean
  *
- * @param mean
- * mean (expected value) of the distribution.
+ * @param mean expected value of the distribution.
  */
 fun Random.nextExponential(mean: Double) = -1.0 * mean * Math.log(nextDouble())
 

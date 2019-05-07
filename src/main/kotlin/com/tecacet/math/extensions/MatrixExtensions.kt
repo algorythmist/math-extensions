@@ -6,11 +6,22 @@ import java.util.*
 typealias Vector = DoubleArray
 typealias Matrix = Array<DoubleArray>
 
-//vector scalar multiplication
+//VECTOR OPERATIONS
+
+operator fun DoubleArray.unaryMinus() = this.map { -it }.toDoubleArray()
+
+/**
+ * vector scalar multiplication
+ */
 operator fun DoubleArray.times(scalar : Number) = this.map { v -> v*scalar.toDouble() }.toDoubleArray()
+/**
+ * scalar vector multiplication
+ */
 operator fun Number.times(x : DoubleArray) = x*this
 
-//vector scalar division
+/**
+ * vector scalar division
+ */
 operator fun DoubleArray.div(scalar : Number) = this.map { v -> v/scalar.toDouble() }.toDoubleArray()
 
 /**
@@ -24,16 +35,66 @@ operator fun DoubleArray.plus(x : DoubleArray) = this.indices.map { this[it] + x
  */
 operator fun DoubleArray.minus(x : DoubleArray) = this.indices.map { this[it] - x[it] }.toDoubleArray()
 
-//inner product
+/**
+ * Inner Product
+ */
 operator fun DoubleArray.times(v : DoubleArray) = this.indices.map { this[it]*v[it] }.sum()
+
+/**
+ * Inner Product with int array
+ */
 operator fun DoubleArray.times(v : IntArray) = this.indices.map { this[it]*v[it] }.sum()
 
+/**
+ * First index that achieves the maximum value
+ */
 fun DoubleArray.argmax() = (0 until this.size).maxBy { this[it] }
 
 fun DoubleArray.normSquared() = this*this
 fun DoubleArray.norm() = Math.sqrt(this.normSquared())
 
-//matrix scalar operations
+/**
+ * Create a vector of ones
+ */
+fun ones(dimension: Int) = DoubleArray(dimension) { _ -> 1.0}
+/**
+ * Create a vector of zeros
+ */
+fun zeros(dimension: Int) = DoubleArray(dimension) { _ -> 0.0}
+
+/**
+ * Create a coordinate vector of dimension <code>dimension</code> with 1 in <code>index</code> and 0 elsewhere
+ * @param dimension the dimension of the vector
+ * @param index the index to set to 1
+ */
+fun coordinate(dimension : Int, index : Int) : DoubleArray {
+    val v =  DoubleArray(dimension) {0.0}
+    v[index] = 1.0
+    return v
+}
+
+fun toString(v : Vector) = Arrays.toString(v)
+
+//MATRIX OPERATIONS
+
+/**
+ * Get the ith row of a matrix
+ */
+fun Array<DoubleArray>.row(i : Int) = this[i]
+
+/**
+ * Number of rows
+ */
+fun Array<DoubleArray>.rows() = this.size
+
+/**
+ * Number of columns
+ */
+fun Array<DoubleArray>.columns() = if (this.isEmpty()) 0 else this[0].size
+
+/**
+ * Matrix-scalar multiplication
+ */
 operator fun Array<DoubleArray>.times(scalar : Number) : Array<DoubleArray> {
     val X = doubleMatrix(this.rows(), this.columns())
     for (i in 0 until this.rows()) {
@@ -44,28 +105,23 @@ operator fun Array<DoubleArray>.times(scalar : Number) : Array<DoubleArray> {
     return X
 }
 
-operator fun Number.times(A : Array<DoubleArray>) : Array<DoubleArray> = A*this
-
-operator fun Array<DoubleArray>.div(scalar : Number) = this.times(1.0/scalar.toDouble())
-
-//Int to Double
-fun IntArray.toDoubleArray() = this.map { it.toDouble() }.toDoubleArray()
+operator fun Array<DoubleArray>.unaryMinus() = this*-1
 
 /**
- * Create a coordinate vector of dimension $dimension with 1 in $index and 0 elsewhere
- * @param dimension the dimension of the vector
- * @param index the index to set to 1
+ * Scalar-matrix multiplication
  */
-fun coordinate(dimension : Int, index : Int) : DoubleArray {
-    val v =  DoubleArray(dimension) {0.0}
-    v[index] = 1.0
-    return v
-}
+operator fun Number.times(A : Array<DoubleArray>) : Array<DoubleArray> = A*this
 
-fun ones(dimension: Int) = DoubleArray(dimension) { _ -> 1.0}
-fun zeros(dimension: Int) = DoubleArray(dimension) { _ -> 0.0}
+/**
+ * Matrix-scalar division
+ */
+operator fun Array<DoubleArray>.div(scalar : Number) = this.times(1.0/scalar.toDouble())
 
-fun toString(v : Vector) = Arrays.toString(v)
+/**
+ * Convert an IntArray to DoubleArray
+ */
+fun IntArray.toDoubleArray() = this.map { it.toDouble() }.toDoubleArray()
+
 
 /**
  * Add two matrices
@@ -94,7 +150,7 @@ operator fun Array<DoubleArray>.minus(A : Array<DoubleArray>) : Array<DoubleArra
 }
 
 /**
- * matrix vector multiplication
+ * Matrix-vector multiplication
  */
 operator fun Array<DoubleArray>.times(x : DoubleArray) : DoubleArray {
     if (this.columns() != x.size) throw IllegalArgumentException("Incompatible sizes")
@@ -110,21 +166,12 @@ operator fun Matrix.times(A : Matrix) : Matrix {
 }
 
 /**
- * vector matrix multiplication
+ * Matrix multiplication with vector of integers
  */
-operator fun Array<DoubleArray>.times(x : IntArray) : DoubleArray {
-    if (this.columns() != x.size) throw IllegalArgumentException("Incompatible sizes")
-    val y = DoubleArray(this.size)
-    for (j in 0 until this.size) {
-        for (i in 0 until this[j].size) {
-            y[j] += this[j][i] * x[i]
-        }
-    }
-    return y
-}
+operator fun Array<DoubleArray>.times(x : IntArray) : DoubleArray = this * x.toDoubleArray()
 
 /**
- * vector matrix multiplication
+ * Vector-matrix multiplication
  */
 operator fun DoubleArray.times(A : Array<DoubleArray>) : DoubleArray {
     if (this.size != A.rows()) throw IllegalArgumentException("Incompatible sizes")
@@ -137,10 +184,9 @@ operator fun DoubleArray.times(A : Array<DoubleArray>) : DoubleArray {
     return y
 }
 
-fun Array<DoubleArray>.row(i : Int) = this[i]
-fun Array<DoubleArray>.rows() = this.size
-fun Array<DoubleArray>.columns() = if (this.isEmpty()) 0 else this[0].size
-
+/**
+ * Transpose matrix
+ */
 fun Array<DoubleArray>.transpose() : Array<DoubleArray> {
     if (this.isEmpty()) {
         return this
