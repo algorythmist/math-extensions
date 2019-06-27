@@ -75,9 +75,7 @@ internal class MatrixExtensionsTest {
 
         assertEquals(sqrt(3.0), v.norm(),0.001)
         assertEquals(3.0, v.normSquared(),0.001)
-
     }
-
 
     @Test
     fun matrixArithmetic() {
@@ -127,5 +125,14 @@ internal class MatrixExtensionsTest {
             "[6.0, 2.0]\n" +
                     "[2.0, 9.0]",
             toString(m.transpose()*m))
+    }
+
+    @Test
+    fun unitMatrix() {
+        val u = unit(3)
+        assertEquals(3, u.columns())
+        assertEquals(3, u.rows())
+        assertEquals(0.0, u[0][1])
+        assertEquals(1.0, u[1][1])
     }
 }
