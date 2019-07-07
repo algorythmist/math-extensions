@@ -56,11 +56,11 @@ fun DoubleArray.norm() = Math.sqrt(this.normSquared())
 /**
  * Create a vector of ones
  */
-fun ones(dimension: Int) = DoubleArray(dimension) { _ -> 1.0}
+fun ones(dimension: Int) = DoubleArray(dimension) { 1.0}
 /**
  * Create a vector of zeros
  */
-fun zeros(dimension: Int) = DoubleArray(dimension) { _ -> 0.0}
+fun zeros(dimension: Int) = DoubleArray(dimension) { 0.0}
 
 /**
  * Create a coordinate vector of dimension <code>dimension</code> with 1 in <code>index</code> and 0 elsewhere
@@ -203,6 +203,11 @@ fun Array<DoubleArray>.transpose() : Array<DoubleArray> {
 fun toString(matrix : Array<DoubleArray>) : String {
     return (0 until matrix.rows()).map { toString(matrix[it]) }.joinToString ("\n" )
 }
+
+/**
+ * Create a unit matrix of the given dimension
+ */
+fun unit(dimension: Int) = Array(dimension) { i -> DoubleArray(dimension) { j -> if (i==j) 1.0 else 0.0 } }
 
 //double array initialization
 fun intMatrix(sizeOuter: Int, sizeInner: Int): Array<IntArray>
