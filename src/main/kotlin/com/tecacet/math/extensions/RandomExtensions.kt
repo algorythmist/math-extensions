@@ -3,7 +3,7 @@
  */
 package com.tecacet.math.extensions
 
-import java.util.*
+import java.util.Random
 import kotlin.math.ceil
 import kotlin.math.ln
 
