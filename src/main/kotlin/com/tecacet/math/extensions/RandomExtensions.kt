@@ -28,7 +28,7 @@ fun Random.nextUniform(from: Double, to: Double) = (this.nextDouble() * (to - fr
  */
 fun Random.nextBinomial(n: Int, p: Double): Int {
     if (p < 0 || p > 1) throw IllegalArgumentException("Invalid probability value $p.")
-    return (0 until n).map { _ -> nextDouble() }.filter { it < p }.count()
+    return (0 until n).map { nextDouble() }.filter { it < p }.count()
 }
 
 /**
