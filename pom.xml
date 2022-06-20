@@ -16,7 +16,7 @@
 
     <properties>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
-        <kotlin.version>1.4.20</kotlin.version>
+        <kotlin.version>1.6.0</kotlin.version>
         <jupiter.version>5.7.0</jupiter.version>
         <dokka.version>0.10.1</dokka.version>
         <nexus-staging.version>1.6.8</nexus-staging.version>
