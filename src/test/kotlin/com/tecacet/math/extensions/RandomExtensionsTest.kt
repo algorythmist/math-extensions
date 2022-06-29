@@ -22,6 +22,6 @@ internal class RandomExtensionsTest {
         assertTrue(g > 9.5 && g < 10.5)
 
         val e = random.nextExponential(2.0)
-        println(e)
+        assertTrue(e > 0)
     }
 }
