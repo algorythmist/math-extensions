@@ -1,0 +1,5 @@
+ * create permutation from vararg ints
+ * create from transposition
+ * factor as cycles
+ * compute order
+ * Permutation must know if it is even/odd
