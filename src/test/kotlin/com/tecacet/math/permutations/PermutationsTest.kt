@@ -19,8 +19,8 @@ internal class PermutationsTest {
 
     @Test
     fun compose() {
-        val permutation1 = intArrayOf(1, 0, 3, 2)
-        val permutation2 = intArrayOf(2, 1, 0, 3)
+        val permutation1 = intArrayOf(2, 1, 0, 3)
+        val permutation2 = intArrayOf(1, 0, 3, 2)
         val composite = compose(permutation1, permutation2)
         assertArrayEquals(intArrayOf(1, 2, 3, 0), composite)
     }

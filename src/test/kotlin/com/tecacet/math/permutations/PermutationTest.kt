@@ -18,9 +18,9 @@ internal class PermutationTest {
         assertEquals(4, permutation1.size)
         val permutation2 = Permutation(intArrayOf(2, 1, 0, 3))
         val composite1 = permutation1 * permutation2
-        assertArrayEquals(intArrayOf(1, 2, 3, 0), composite1.asArray())
+        assertArrayEquals(intArrayOf(3, 0, 1, 2), composite1.asArray())
         val composite2 = permutation2 * permutation1
-        assertArrayEquals(intArrayOf(3, 0, 1, 2), composite2.asArray())
+        assertArrayEquals(intArrayOf(1, 2, 3, 0), composite2.asArray())
     }
 
     @Test

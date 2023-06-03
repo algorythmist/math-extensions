@@ -54,7 +54,7 @@ fun compose(permutation1: IntArray, permutation2: IntArray): IntArray {
     if (permutation1.size != permutation2.size) {
         throw IllegalArgumentException("The permutations do not have the same length")
     }
-    return permutation1.indices.map { permutation2[permutation1[it]] }.toIntArray()
+    return permutation1.indices.map { permutation1[permutation2[it]] }.toIntArray()
 }
 
 /**
