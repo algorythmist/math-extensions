@@ -20,8 +20,8 @@
         <jupiter.version>5.11.3</jupiter.version>
         <dokka.version>1.9.20</dokka.version>
         <nexus-staging.version>1.6.8</nexus-staging.version>
-        <maven-source.version>3.0.1</maven-source.version>
-        <maven-gpg.version>1.6</maven-gpg.version>
+        <maven-source.version>3.3.1</maven-source.version>
+        <maven-gpg.version>3.2.7</maven-gpg.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
