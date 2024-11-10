@@ -14,8 +14,8 @@ repositories {
     mavenCentral()
 }
 
-def kotlinVersion = '1.7.0'
-def jupiterVersion = "5.8.2"
+def kotlinVersion = '1.9.20'
+def jupiterVersion = "5.11.3"
 
 
 dependencies {
@@ -29,11 +29,11 @@ test {
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions.jvmTarget = '11'
 }
 
 compileTestKotlin {
-    kotlinOptions.jvmTarget = '1.8'
+    kotlinOptions.jvmTarget = '11'
 }
 
 publishing {
